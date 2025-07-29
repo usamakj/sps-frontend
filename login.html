@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Security Management Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-800 text-gray-100 flex justify-center items-center min-h-screen font-sans">
+    <div class="bg-gray-700 p-8 sm:p-10 rounded-lg shadow-2xl w-full max-w-sm text-center">
+        <img src="assets/images/login-logo.png" alt="Nepra Logo" class="w-40 mx-auto mb-6">
+        
+        <p class="text-gray-300 mb-2">Security Management Platform</p>
+        <h1 class="text-2xl font-medium mb-8">Login</h1>
+        
+        <form id="loginForm" novalidate>
+            <div class="mb-6 text-left">
+                <label for="username" class="block mb-2 text-sm font-medium text-gray-300">
+                    Username or email <span class="text-red-500">*</span>
+                </label>
+                <div class="relative">
+                    <input type="text" id="username" 
+                           class="w-full p-3 pl-10 bg-gray-600 border border-gray-500 rounded-md text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" 
+                           placeholder="user@example.com" 
+                           required>
+                    <i class="fas fa-user absolute left-3 top-3.5 text-gray-400"></i>
+                </div>
+                <div id="usernameError" class="text-red-500 text-sm mt-1 hidden">
+                    Please enter a valid username or email.
+                </div>
+            </div>
+            
+            <div class="mb-4 text-left">
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-300">
+                    Password <span class="text-red-500">*</span>
+                </label>
+                <div class="relative">
+                    <input type="password" id="password" 
+                           class="w-full p-3 pl-10 bg-gray-600 border border-gray-500 rounded-md text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" 
+                           placeholder="••••••••" 
+                           required>
+                    <i class="fas fa-lock absolute left-3 top-3.5 text-gray-400"></i>
+                    <button type="button" id="togglePassword" class="absolute right-3 top-3.5 text-gray-400 hover:text-gray-300">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div id="passwordError" class="text-red-500 text-sm mt-1 hidden">
+                    Password must be at least 8 characters with one number.
+                </div>
+                <div id="passwordStrength" class="h-1 mt-2 hidden">
+                    <div class="h-full bg-gray-500 rounded-full overflow-hidden">
+                        <div id="strengthMeter" class="h-full transition-all duration-500"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-between items-center mb-6 text-sm">
+                <label class="flex items-center text-gray-300">
+                    <input type="checkbox" id="rememberMe" class="rounded bg-gray-600 border-gray-500 text-blue-500 focus:ring-blue-500">
+                    <span class="ml-2">Remember me</span>
+                </label>
+                <a href="/sps-frontend/forgot_password.html" class="text-blue-500 hover:underline">
+                    Forgot password?
+                </a>
+            </div>
+            
+            <button type="submit" id="loginBtn" class="w-full py-3 bg-blue-600 rounded-md text-white font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-700 focus:ring-blue-500 transition flex justify-center items-center">
+                <span id="btnText">Login</span>
+                <i id="spinner" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loginForm = document.getElementById('loginForm');
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const togglePassword = document.getElementById('togglePassword');
+            const usernameError = document.getElementById('usernameError');
+            const passwordError = document.getElementById('passwordError');
+            const passwordStrength = document.getElementById('passwordStrength');
+            const strengthMeter = document.getElementById('strengthMeter');
+            const loginBtn = document.getElementById('loginBtn');
+            const btnText = document.getElementById('btnText');
+            const spinner = document.getElementById('spinner');
+            const rememberMe = document.getElementById('rememberMe');
+
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+            });
+
+            usernameInput.addEventListener('input', validateUsername);
+            passwordInput.addEventListener('input', validatePassword);
+
+            loginForm.addEventListener('submit', async function (event) {
+                event.preventDefault();
+                
+                const isUsernameValid = validateUsername();
+                const isPasswordValid = validatePassword();
+                
+                if (isUsernameValid && isPasswordValid) {
+                    loginBtn.disabled = true;
+                    btnText.textContent = 'Authenticating...';
+                    spinner.classList.remove('hidden');
+                    
+                    try {
+                        await new Promise(resolve => setTimeout(resolve, 1500));
+                        showToast('Login successful! Redirecting...', 'success');
+                        loginForm.reset();
+                    } catch (error) {
+                        console.error('Login error:', error);
+                        showToast('Invalid credentials. Please try again.', 'error');
+                    } finally {
+                        loginBtn.disabled = false;
+                        btnText.textContent = 'Login';
+                        spinner.classList.add('hidden');
+                    }
+                }
+            });
+
+            function validateUsername() {
+                const value = usernameInput.value.trim();
+                let isValid = true;
+                
+                if (value === '') {
+                    showError(usernameInput, usernameError, 'Username or email is required');
+                    isValid = false;
+                } else if (!isValidEmail(value) && !isValidUsername(value)) {
+                    showError(usernameInput, usernameError, 'Please enter a valid username or email');
+                    isValid = false;
+                } else {
+                    hideError(usernameInput, usernameError);
+                }
+                
+                return isValid;
+            }
+
+            function validatePassword() {
+                const value = passwordInput.value;
+                let isValid = true;
+                
+                if (value === '') {
+                    showError(passwordInput, passwordError, 'Password is required');
+                    passwordStrength.classList.add('hidden');
+                    isValid = false;
+                } else if (value.length < 8) {
+                    showError(passwordInput, passwordError, 'Password must be at least 8 characters');
+                    updatePasswordStrength(value);
+                    isValid = false;
+                } else if (!/\d/.test(value)) {
+                    showError(passwordInput, passwordError, 'Password must contain at least one number');
+                    updatePasswordStrength(value);
+                    isValid = false;
+                } else {
+                    hideError(passwordInput, passwordError);
+                    updatePasswordStrength(value);
+                }
+                
+                return isValid;
+            }
+
+            function updatePasswordStrength(password) {
+                passwordStrength.classList.remove('hidden');
+                
+                let strength = 0;
+                if (password.length >= 8) strength += 1;
+                if (password.length >= 12) strength += 1;
+                if (/\d/.test(password)) strength += 1;
+                if (/[A-Z]/.test(password)) strength += 1;
+                if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+                
+                const width = Math.min(100, strength * 25);
+                strengthMeter.style.width = `${width}%`;
+                
+                if (width < 40) {
+                    strengthMeter.className = 'h-full bg-red-500 transition-all duration-500';
+                } else if (width < 70) {
+                    strengthMeter.className = 'h-full bg-yellow-500 transition-all duration-500';
+                } else {
+                    strengthMeter.className = 'h-full bg-green-500 transition-all duration-500';
+                }
+            }
+
+            function showError(input, errorElement, message) {
+                input.classList.remove('border-gray-500', 'border-green-500');
+                input.classList.add('border-red-500');
+                errorElement.textContent = message;
+                errorElement.classList.remove('hidden');
+            }
+
+            function hideError(input, errorElement) {
+                input.classList.remove('border-red-500');
+                input.classList.add('border-gray-500');
+                errorElement.classList.add('hidden');
+            }
+
+            function isValidEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            function isValidUsername(username) {
+                const re = /^[a-zA-Z0-9_]{4,20}$/;
+                return re.test(username);
+            }
+
+            function showToast(message, type) {
+                const toast = document.createElement('div');
+                toast.className = `fixed top-4 right-4 px-6 py-3 rounded-md text-white font-medium shadow-lg z-50 animate-fade-in ${
+                    type === 'success' ? 'bg-green-600' : 'bg-red-600'
+                }`;
+                toast.innerHTML = `
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'} mr-2"></i>
+                    ${message}
+                `;
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.remove();
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

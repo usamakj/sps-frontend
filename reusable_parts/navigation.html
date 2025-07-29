@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="bg-[#052c65] shadow-sm sticky top-0 z-50">
+        <div class="w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="/sps-frontend" aria-label="SPS Home">
+                        <img class="h-8 w-auto" src="assets/images/sps-logo-1.png" alt="SPS Logo" width="125"
+                            height="32" loading="eager" />
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex items-center space-x-1" aria-label="Main Navigation">
+                    <a href="/sps-frontend"
+                        class="text-white hover:text-blue-300 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+
+                    <div class="relative desktop-dropdown">
+                        <button
+                            class="text-white hover:text-blue-300 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span>Products</span>
+                            <svg class="w-4 h-4 ml-1 transition-transform duration-200" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div
+                            class="desktop-dropdown-menu absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                            <a href="/sps-frontend/pages/products/kaspersky.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Kaspersky</a>
+                            <a href="/sps-frontend/pages/products/tenable.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tenable</a>
+                            <a href="/sps-frontend/pages/products/microsoft.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Microsoft</a>
+                            <a href="/sps-frontend/pages/products/fortinet.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Fortinet</a>
+                            <a href="/sps-frontend/pages/products/trend-micro.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Trend Micro</a>
+                        </div>
+                    </div>
+
+                    <div class="relative desktop-dropdown">
+                        <button
+                            class="text-white hover:text-blue-300 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span>Services</span>
+                            <svg class="w-4 h-4 ml-1 transition-transform duration-200" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="desktop-dropdown-menu absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-1">
+                            <a href="/sps-frontend/pages/services/security-policy-management-for-it-and-ot.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Security Policy
+                                Management</a>
+                            <a href="/sps-frontend/pages/services/security-controls-implementation-and-improvement.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Security Controls
+                                Improvement</a>
+                            <a href="/sps-frontend/pages/services/security-risk-vulnerability-assessment.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Vulnerability
+                                Assessment</a>
+                            <a href="/sps-frontend/pages/services/data-management.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Data Management</a>
+                            <a href="/sps-frontend/pages/services/audit-and-risk-assessment.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Audit & Risk
+                                Assessment</a>
+                            <a href="/sps-frontend/pages/services/monitoring-and-incident-response.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Incident Response</a>
+                            <a href="/sps-frontend/pages/services/awareness-and-training.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Awareness & Training</a>
+                            <a href="/sps-frontend/pages/services/regulatory-reporting.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Regulatory Reporting</a>
+                        </div>
+                    </div>
+
+                    <div class="relative desktop-dropdown">
+                        <button
+                            class="text-white hover:text-blue-300 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span>Pricing</span>
+                            <svg class="w-4 h-4 ml-1 transition-transform duration-200" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div
+                            class="desktop-dropdown-menu absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                            <a href="/sps-frontend/pages/pricing/basic-plan.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Basic Plan</a>
+                            <a href="/sps-frontend/pages/pricing/standard-plan.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Standard Plan</a>
+                            <a href="/sps-frontend/pages/pricing/premium-plan.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Premium Plan</a>
+                        </div>
+                    </div>
+
+                    <div class="relative desktop-dropdown">
+                        <button
+                            class="text-white hover:text-blue-300 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span>Activities</span>
+                            <svg class="w-4 h-4 ml-1 transition-transform duration-200" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div
+                            class="desktop-dropdown-menu absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                            <a href="/sps-frontend/pages/activities/webinar/achieving-nepra-cybersecurity-compliance-with-kaspersky.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Webinar</a>
+                            <a href="/sps-frontend/pages/activities/blog.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Blog</a>
+                        </div>
+                    </div>
+
+                    <div class="relative desktop-dropdown">
+                        <button
+                            class="text-white hover:text-blue-300 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span>About Us</span>
+                            <svg class="w-4 h-4 ml-1 transition-transform duration-200" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div
+                            class="desktop-dropdown-menu absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                            <a href="/sps-frontend/pages/about/contact-us.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
+                            <a href="/sps-frontend/pages/about/jobs.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Jobs</a>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="hidden md:flex items-center ml-4">
+                    <a href="/sps-frontend/login.html"
+                        class="px-4 py-2 rounded-md text-sm font-medium text-white border border-white hover:bg-white hover:text-[#052c65] transition-colors duration-300 whitespace-nowrap">
+                        Login to CSM
+                    </a>
+                </div>
+
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-button" type="button"
+                        class="bg-transparent inline-flex items-center justify-center p-2 rounded-md text-blue-200 hover:text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                        aria-expanded="false" aria-controls="mobile-menu">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/sps-frontend"
+                    class="text-blue-200 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+
+                <div>
+                    <button
+                        class="mobile-menu-toggle w-full text-left text-blue-200 hover:text-white block px-3 py-2 rounded-md text-base font-medium flex justify-between items-center">
+                        Products
+                        <svg class="arrow-icon w-5 h-5 transition-transform" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="mobile-submenu pl-4">
+                        <a href="/sps-frontend/pages/products/kaspersky.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Kaspersky</a>
+                        <a href="/sps-frontend/pages/products/tenable.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Tenable</a>
+                        <a href="/sps-frontend/pages/products/microsoft.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Microsoft</a>
+                        <a href="/sps-frontend/pages/products/fortinet.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Fortinet</a>
+                        <a href="/sps-frontend/pages/products/trend-micro.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Trend Micro</a>
+                    </div>
+                </div>
+
+                <div>
+                    <button
+                        class="mobile-menu-toggle w-full text-left text-blue-200 hover:text-white block px-3 py-2 rounded-md text-base font-medium flex justify-between items-center">
+                        Services
+                        <svg class="arrow-icon w-5 h-5 transition-transform" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="mobile-submenu pl-4">
+                        <a href="/sps-frontend/pages/services/security-policy-management-for-it-and-ot.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Security Policy
+                            Management</a>
+                        <a href="/sps-frontend/pages/services/security-controls-implementation-and-improvement.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Security Controls
+                            Improvement</a>
+                        <a href="/sps-frontend/pages/services/security-risk-vulnerability-assessment.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Vulnerability
+                            Assessment</a>
+                        <a href="/sps-frontend/pages/services/data-management.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Data
+                            Management</a>
+                        <a href="/sps-frontend/pages/services/audit-and-risk-assessment.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Audit & Risk
+                            Assessment</a>
+                        <a href="/sps-frontend/pages/services/monitoring-and-incident-response.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Incident
+                            Response</a>
+                        <a href="/sps-frontend/pages/services/awareness-and-training.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Awareness &
+                            Training</a>
+                        <a href="/sps-frontend/pages/services/regulatory-reporting.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Regulatory
+                            Reporting</a>
+                    </div>
+                </div>
+
+                <div>
+                    <button
+                        class="mobile-menu-toggle w-full text-left text-blue-200 hover:text-white block px-3 py-2 rounded-md text-base font-medium flex justify-between items-center">
+                        Pricing
+                        <svg class="arrow-icon w-5 h-5 transition-transform" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="mobile-submenu pl-4">
+                        <a href="/sps-frontend/pages/pricing/basic-plan.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Basic Plan</a>
+                        <a href="/sps-frontend/pages/pricing/standard-plan.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Standard Plan</a>
+                        <a href="/sps-frontend/pages/pricing/premium-plan.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Premium Plan</a>
+                    </div>
+                </div>
+
+                <div>
+                    <button
+                        class="mobile-menu-toggle w-full text-left text-blue-200 hover:text-white block px-3 py-2 rounded-md text-base font-medium flex justify-between items-center">
+                        Activities
+                        <svg class="arrow-icon w-5 h-5 transition-transform" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="mobile-submenu pl-4">
+                        <a href="/sps-frontend/pages/activities/webinar/achieving-nepra-cybersecurity-compliance-with-kaspersky.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Webinar</a>
+                        <a href="/sps-frontend/pages/activities/blog.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Blog</a>
+                    </div>
+                </div>
+
+                <div>
+                    <button
+                        class="mobile-menu-toggle w-full text-left text-blue-200 hover:text-white block px-3 py-2 rounded-md text-base font-medium flex justify-between items-center">
+                        About Us
+                        <svg class="arrow-icon w-5 h-5 transition-transform" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="mobile-submenu pl-4">
+                        <a href="/sps-frontend/pages/about/contact-us.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Contact Us</a>
+                        <a href="/sps-frontend/pages/about/jobs.html"
+                            class="text-blue-300 hover:text-white block px-3 py-2 rounded-md text-sm">Jobs</a>
+                    </div>
+                </div>
+
+                <div class="pt-4 mt-4 border-t border-blue-800">
+                    <a href="/sps-frontend/login.html"
+                        class="w-full text-center block px-4 py-2 rounded-md text-base font-medium text-white border border-white hover:bg-white hover:text-[#052c65] transition duration-300">Login
+                        to CSM</a>
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
+
+</html>

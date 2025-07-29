@@ -1,0 +1,12 @@
+{
+  "root": "/sps-frontend",
+  "mount": [
+    ["/sps-frontend", "./"],
+    ["/", "./index.html"]
+  ],
+  "port": 5500,
+  "ignoreFiles": [
+    "**/.git/**",
+    "**/node_modules/**"
+  ]
+}
